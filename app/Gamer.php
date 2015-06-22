@@ -42,8 +42,11 @@ class Gamer extends Model
         ])->withTimestamps();
     }
 
-    public function newPivot()
+    /**
+     * {@inheritdoc}
+     */
+    public function newPivot(Model $parent, array $attributes, $table, $exists)
     {
-
+        return new GamesGamersPivot($parent, $attributes, $table, $exists);
     }
 }

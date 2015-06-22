@@ -18,6 +18,19 @@ class Game extends Model
 
     public function gamers()
     {
-        return $this->belongsToMany('DashboardersHeaven\Gamer');
+        return $this->belongsToMany('DashboardersHeaven\Gamer')->withPivot([
+            'earned_achievements',
+            'current_gamerscore',
+            'max_gamerscore',
+            'last_unlock'
+        ])->withTimestamps();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function newPivot(Model $parent, array $attributes, $table, $exists)
+    {
+        return new GamesGamersPivot($parent, $attributes, $table, $exists);
     }
 }
