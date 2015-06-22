@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace DashboardersHeaven\Jobs;
 
 use Illuminate\Bus\Queueable;
 

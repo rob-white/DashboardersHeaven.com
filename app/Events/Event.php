@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace DashboardersHeaven\Events;
 
 abstract class Event
 {

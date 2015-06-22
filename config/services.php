@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => App\User::class,
+        'model'  => DashboardersHeaven\Gamer::class,
         'key' => '',
         'secret' => '',
     ],
