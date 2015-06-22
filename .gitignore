@@ -3,3 +3,7 @@
 .env
 /bootstrap/cache
 .idea/
+/public/build
+/public/css
+/public/js
+/public/fonts

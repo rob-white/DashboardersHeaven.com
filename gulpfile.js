@@ -11,6 +11,23 @@ var elixir = require('laravel-elixir');
  |
  */
 
+var paths = {
+    jquery: 'vendor/jquery/',
+    bootstrap: 'vendor/bootstrap/'
+};
+
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.styles([
+        paths.bootstrap + 'bootstrap.css',
+        paths.bootstrap + 'bootstrap-solid-theme.css',
+        paths.bootstrap + 'font-awesome.min.css'
+    ], null, 'resources/assets/css/');
+
+    mix.scripts([
+        paths.jquery + 'jquery-2.1.4.min.js',
+        paths.bootstrap + 'bootstrap.min.js'
+    ], null, 'resources/assets/js/');
+
+    mix.version(['public/css/all.css', 'public/js/all.js']);
+    mix.copy('resources/assets/fonts', 'public/build/fonts');
 });
