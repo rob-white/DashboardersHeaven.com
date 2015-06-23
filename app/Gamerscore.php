@@ -11,6 +11,10 @@ class Gamerscore extends Model
         'score',
     ];
 
+    /**
+     * Get the gamer for a gamerscore.
+     *
+     */
     public function gamer()
     {
         $this->belongsTo('DashboardersHeaven\Gamer');

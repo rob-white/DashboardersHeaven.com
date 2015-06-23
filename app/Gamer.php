@@ -27,19 +27,31 @@ class Gamer extends Model
         'avatar_manifest'
     ];
 
+    /**
+     * Get all gamerscores for a gamer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function gamerscores()
     {
         return $this->hasMany('DashboardersHeaven\Gamerscore');
     }
 
+    /**
+     * Get all games for a gamer.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function games()
     {
-        return $this->belongsToMany('DashboardersHeaven\Game')->withPivot([
-            'earned_achievements',
-            'current_gamerscore',
-            'max_gamerscore',
-            'last_unlock'
-        ])->withTimestamps();
+        return $this->belongsToMany('DashboardersHeaven\Game')
+                    ->withPivot([
+                        'earned_achievements',
+                        'current_gamerscore',
+                        'max_gamerscore',
+                        'last_unlock'
+                    ])
+                    ->withTimestamps();
     }
 
     /**
