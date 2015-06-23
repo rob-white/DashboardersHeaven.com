@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace DashboardersHeaven\Http\Controllers\Auth;
 
-use App\User;
+use DashboardersHeaven\Gamer;
 use Validator;
-use App\Http\Controllers\Controller;
+use DashboardersHeaven\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
@@ -51,11 +51,12 @@ class AuthController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     *
+*@return Gamer
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Gamer::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),

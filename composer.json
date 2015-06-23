@@ -7,20 +7,22 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "predis/predis": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1"
+        "phpspec/phpspec": "~2.1",
+        "barryvdh/laravel-ide-helper": "^2.0"
     },
     "autoload": {
         "classmap": [
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "DashboardersHeaven\\": "app/"
         },
         "files": [
           "app/Http/helpers.php"
