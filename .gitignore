@@ -1,5 +1,11 @@
 /vendor
 /node_modules
 .env
+.phpstorm.meta.php
+_ide_helper.php
 /bootstrap/cache
 .idea/
+public/build
+public/fonts
+public/css
+public/js
