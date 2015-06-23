@@ -4,29 +4,28 @@
     Home
 @endsection
 
-@section('content')
-    <!-- *****************************************************************************************************************
-     HEADERWRAP
-     ***************************************************************************************************************** -->
-    {{--<div id="headerwrap">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row">--}}
-    {{--<div class="col-lg-8 col-lg-offset-2">--}}
-    {{--<h3>Show your work with this beautiful theme</h3>--}}
-    {{--<h1>Eyecatching Bootstrap 3 Theme.</h1>--}}
-    {{--<h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>--}}
-    {{--<h5>More Lorem Ipsum added here too.</h5>--}}
-    {{--</div>--}}
-    {{--<div class="col-lg-8 col-lg-offset-2 himg">--}}
-    {{--<img src="assets/img/browser.png" class="img-responsive">--}}
-    {{--</div>--}}
-    {{--</div><!-- /row -->--}}
-    {{--</div> <!-- /container -->--}}
-    {{--</div><!-- /headerwrap -->--}}
+@section('header')
+    <!-- Section 1 (Header) -->
+    <div id="headerwrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h3>Lorem Ipsum</h3>
+                    <h1>Carousel of Newest Clips?</h1>
+                    <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
+                    <h5>More Lorem Ipsum added here too.</h5>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 himg">
+                    {{--<img src="assets/img/browser.png" class="img-responsive">--}}
+                </div>
+            </div><!-- /row -->
+        </div> <!-- /container -->
+    </div><!-- /headerwrap -->
+@endsection
 
-    <!-- *****************************************************************************************************************
-     SERVICE LOGOS
-     ***************************************************************************************************************** -->
+@section('content')
+
+    <!-- Section 2 -->
     <div id="service">
         <div class="container">
             <div class="row centered">
@@ -52,153 +51,7 @@
         </div><! --/container -->
     </div><! --/service -->
 
-    {{--<!-- *****************************************************************************************************************--}}
-    {{--PORTFOLIO SECTION--}}
-    {{--***************************************************************************************************************** -->--}}
-    {{--<div id="portfoliowrap">--}}
-    {{--<h3>LATEST WORKS</h3>--}}
-
-    {{--<div class="portfolio-centered">--}}
-    {{--<div class="recentitems portfolio">--}}
-    {{--<div class="portfolio-item graphic-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_09.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_09.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item web-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_02.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Web Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_02.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item graphic-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_03.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_03.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item graphic-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_04.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_04.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item books">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_05.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Book Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_05.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item graphic-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_06.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_06.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item books">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_07.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Book Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_07.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item graphic-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_08.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Graphic Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_08.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item web-design">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_01.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Web Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_01.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--<div class="portfolio-item books">--}}
-    {{--<div class="he-wrap tpl6">--}}
-    {{--<img src="assets/img/portfolio/portfolio_10.jpg" alt="">--}}
-    {{--<div class="he-view">--}}
-    {{--<div class="bg a0" data-animate="fadeIn">--}}
-    {{--<h3 class="a1" data-animate="fadeInDown">A Book Design Item</h3>--}}
-    {{--<a data-rel="prettyPhoto" href="assets/img/portfolio/portfolio_10.jpg" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-search"></i></a>--}}
-    {{--<a href="single-project.html" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-link"></i></a>--}}
-    {{--</div><!-- he bg -->--}}
-    {{--</div><!-- he view -->--}}
-    {{--</div><!-- he wrap -->--}}
-    {{--</div><!-- end col-12 -->--}}
-
-    {{--</div><!-- portfolio -->--}}
-    {{--</div><!-- portfolio container -->--}}
-    {{--</div><!--/Portfoliowrap -->--}}
-
-
-    <!-- *****************************************************************************************************************
-     MIDDLE CONTENT
-     ***************************************************************************************************************** -->
-
+    <!-- Section 3 -->
     <div class="container mtb">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-1">
@@ -230,26 +83,25 @@
         </div><! --/row -->
     </div><! --/container -->
 
-    <!-- *****************************************************************************************************************
-     OUR CLIENTS
-     ***************************************************************************************************************** -->
-    {{--<div id="cwrap">--}}
-    {{--<div class="container">--}}
-    {{--<div class="row centered">--}}
-    {{--<h3>OUR CLIENTS</h3>--}}
-    {{--<div class="col-lg-3 col-md-3 col-sm-3">--}}
-    {{--<img src="assets/img/clients/client01.png" class="img-responsive">--}}
-    {{--</div>--}}
-    {{--<div class="col-lg-3 col-md-3 col-sm-3">--}}
-    {{--<img src="assets/img/clients/client02.png" class="img-responsive">--}}
-    {{--</div>--}}
-    {{--<div class="col-lg-3 col-md-3 col-sm-3">--}}
-    {{--<img src="assets/img/clients/client03.png" class="img-responsive">--}}
-    {{--</div>--}}
-    {{--<div class="col-lg-3 col-md-3 col-sm-3">--}}
-    {{--<img src="assets/img/clients/client04.png" class="img-responsive">--}}
-    {{--</div>--}}
-    {{--</div><! --/row -->--}}
-    {{--</div><! --/container -->--}}
-    {{--</div><! --/cwrap -->--}}
+    <!-- Section 4 -->
+    <div id="cwrap">
+        <div class="container">
+            <div class="row centered">
+                <h3>OUR CLIENTS</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    {{--<img src="assets/img/clients/client01.png" class="img-responsive">--}}
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    {{--<img src="assets/img/clients/client02.png" class="img-responsive">--}}
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    {{--<img src="assets/img/clients/client03.png" class="img-responsive">--}}
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    {{--<img src="assets/img/clients/client04.png" class="img-responsive">--}}
+                </div>
+            </div><! --/row -->
+        </div><! --/container -->
+    </div><! --/cwrap -->
+
 @endsection

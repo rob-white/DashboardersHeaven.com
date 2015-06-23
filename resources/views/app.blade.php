@@ -14,6 +14,8 @@
 
 @include('partials.nav')
 
+@yield('header')
+
 @yield('content')
 
 @include('partials.footer')

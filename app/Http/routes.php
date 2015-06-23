@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/news', 'NewsController@index');
 Route::get('/about', 'AboutController@index');
