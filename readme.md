@@ -10,7 +10,7 @@ Want to help develop our super amazing site? Here's how you can get things setup
 
 1. First install [Laravel Homestead](http://laravel.com/docs/5.1/homestead)
 
-2. Clone the respository to your local machine.
+2. Clone the repository to your local machine.
 
 3. Configure homestead to map the repository to the vagrant box.
 
@@ -18,6 +18,12 @@ Want to help develop our super amazing site? Here's how you can get things setup
 
 ```bash
 composer install && php artisan ide-helper:generate
+```
+
+5. Run the following commands to build front-end files:
+
+```bash
+node install && gulp
 ```
 
 5. (Optional): Run the following command if you are using PHPStorm:
