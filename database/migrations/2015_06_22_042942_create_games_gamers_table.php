@@ -12,7 +12,7 @@ class CreateGamesGamersTable extends Migration
      */
     public function up()
     {
-        Schema::create('games_gamers', function (Blueprint $table) {
+        Schema::create('game_gamer', function (Blueprint $table) {
             $table->integer('game_id')->unsigned();
             $table->integer('gamer_id')->unsigned();
             $table->integer('earned_achievements')->unsigned();
