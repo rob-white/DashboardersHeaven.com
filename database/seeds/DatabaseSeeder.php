@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,10 +12,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $tables = [
+            'gamerscores',
+            'game_gamer',
+            'gamers',
+            'games',
+        ];
+
+        foreach ($tables as $table) {
+            DB::table($table)->truncate();
+        }
+
         Model::unguard();
 
-        // $this->call('UserTableSeeder');
+        $this->call('GamerTableSeeder');
 
         Model::reguard();
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
