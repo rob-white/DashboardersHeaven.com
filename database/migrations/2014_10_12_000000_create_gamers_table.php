@@ -20,8 +20,8 @@ class CreateGamersTable extends Migration
             $table->string('gamerpic_small');
             $table->string('gamerpic_large');
             $table->string('display_pic');
-            $table->text('bio');
-            $table->binary('avatar_manifest');
+            $table->text('bio')->nullable();
+            $table->binary('avatar_manifest')->nullable();
             $table->timestamps();
 
             $table->index('xuid');

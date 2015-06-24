@@ -1,26 +1,30 @@
-## Laravel PHP Framework
+## Dashboarders Heaven.com
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Dashboarders Heaven is a group of gamers who just want to have fun, and occasionally rage quit... ok we rage quit often. We come from the age
+of when the Xbox 360 had a Dashboard and not a "Home", and that Dashboard worked well. This site aims to collate information about our various group members,
+including their game clips, games they play, and more.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Getting Started
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+Want to help develop our super amazing site? Here's how you can get things setup:
 
-## Official Documentation
+1. First install [Laravel Homestead](http://laravel.com/docs/5.1/homestead)
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+2. Clone the respository to your local machine.
 
-## Contributing
+3. Configure homestead to map the repository to the vagrant box.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+4. Run the following commands to finish the project setup:
 
-## Security Vulnerabilities
+```bash
+composer install && php artisan ide-helper:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+5. (Optional): Run the following command if you are using PHPStorm:
+
+```bash
+php artisan ide-helper:meta
+```
 
 ### License
 
