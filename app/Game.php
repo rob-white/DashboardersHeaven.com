@@ -2,6 +2,21 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * DashboardersHeaven\Game
+ *
+ * @property integer                                                                   $id
+ * @property integer                                                                   $title_id
+ * @property string                                                                    $title
+ * @property \Carbon\Carbon                                                            $created_at
+ * @property \Carbon\Carbon                                                            $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamer[] $gamers
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereId( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitleId( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitle( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereCreatedAt( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereUpdatedAt( $value )
+ */
 class Game extends Model
 {
     protected $table = 'games';
