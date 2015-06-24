@@ -26,7 +26,7 @@ composer install && php artisan ide-helper:generate
 node install && gulp
 ```
 
-5. (Optional): Run the following command if you are using PHPStorm:
+6. (Optional): Run the following command if you are using PHPStorm:
 
 ```bash
 php artisan ide-helper:meta
