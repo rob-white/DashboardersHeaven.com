@@ -2,8 +2,9 @@
 
 namespace DashboardersHeaven\Http\Controllers;
 
+use DashboardersHeaven\Game;
+use DashboardersHeaven\Gamer;
 use Illuminate\Http\Request;
-
 use DashboardersHeaven\Http\Requests;
 use DashboardersHeaven\Http\Controllers\Controller;
 

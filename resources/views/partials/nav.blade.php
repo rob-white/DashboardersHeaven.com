@@ -14,6 +14,7 @@
             <ul class="nav navbar-nav">
                 <li class="{{ set_active_link('/', 'active') }}"><a href="{{ url('/') }}">HOME</a></li>
                 <li class="{{ set_active_link('news', 'active') }}"><a href="{{ url('news') }}">NEWS</a></li>
+                <li class="{{ set_active_link('members', 'active') }}"><a href="{{ url('members') }}">MEMBERS</a></li>
                 <li class="{{ set_active_link('about', 'active') }}"><a href="{{ url('about') }}">ABOUT</a></li>
             </ul><!--/.nav .navbar-nav -->
         </div><!--/.nav-collapse -->
