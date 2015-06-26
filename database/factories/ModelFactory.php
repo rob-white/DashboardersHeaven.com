@@ -12,10 +12,40 @@
 */
 
 $factory->define(DashboardersHeaven\Gamer::class, function ($faker) {
+    /**
+     * @var \Faker\Generator $faker
+     */
+
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-        'password' => str_random(10),
-        'remember_token' => str_random(10),
+        'xuid'            => $faker->randomNumber(7),
+        'gamertag'        => $faker->userName,
+        'gamerscore'      => $faker->randomNumber(7),
+        'gamerpic_small'  => $faker->imageUrl(),
+        'gamerpic_large'  => $faker->imageUrl(),
+        'display_pic'     => $faker->imageUrl(),
+        'motto'           => ( mt_rand(0, 1) ) ? $faker->sentence() : null,
+        'bio'             => ( mt_rand(0, 1) ) ? $faker->text() : null,
+        'avatar_manifest' => null,
+    ];
+});
+
+$factory->define(DashboardersHeaven\Gamerscore::class, function ($faker) {
+    /**
+     * @var \Faker\Generator $faker
+     */
+
+    return [
+        'score' => $faker->numberBetween(5, 100),
+    ];
+});
+
+$factory->define(DashboardersHeaven\Game::class, function ($faker) {
+    /**
+     * @var \Faker\Generator $faker
+     */
+
+    return [
+        'title_id' => $faker->randomNumber(6),
+        'title'    => $faker->sentence
     ];
 });
