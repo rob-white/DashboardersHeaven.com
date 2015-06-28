@@ -22,6 +22,7 @@ class CreateGamersTable extends Migration
             $table->string('display_pic');
             $table->text('bio')->nullable();
             $table->binary('avatar_manifest')->nullable();
+            $table->integer('level')->unsigned()->nullable();
             $table->timestamps();
 
             $table->index('xuid');

@@ -26,6 +26,7 @@ $factory->define(DashboardersHeaven\Gamer::class, function ($faker) {
         'motto'           => ( mt_rand(0, 1) ) ? $faker->sentence() : null,
         'bio'             => ( mt_rand(0, 1) ) ? $faker->text() : null,
         'avatar_manifest' => null,
+        'level'           => $faker->numberBetween(1, 13)
     ];
 });
 
