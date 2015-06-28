@@ -35,7 +35,8 @@ $factory->define(DashboardersHeaven\Gamerscore::class, function ($faker) {
      */
 
     return [
-        'score' => $faker->numberBetween(5, 100),
+        'score'      => $faker->numberBetween(5, 100),
+        'created_at' => $faker->dateTimeThisYear
     ];
 });
 
