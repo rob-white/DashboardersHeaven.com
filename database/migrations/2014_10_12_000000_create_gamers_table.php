@@ -14,12 +14,12 @@ class CreateGamersTable extends Migration
     {
         Schema::create('gamers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('xuid')->unsigned();
+            $table->bigInteger('xuid')->unsigned();
             $table->string('gamertag', 15);
             $table->integer('gamerscore')->unsigned();
-            $table->string('gamerpic_small');
-            $table->string('gamerpic_large');
-            $table->string('display_pic');
+            $table->string('gamerpic_small')->nullable();
+            $table->string('gamerpic_large')->nullable();
+            $table->string('display_pic')->nullable();
             $table->text('bio')->nullable();
             $table->binary('avatar_manifest')->nullable();
             $table->integer('level')->unsigned()->nullable();
