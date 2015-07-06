@@ -33,6 +33,7 @@ elixir(function(mix) {
         paths.jquery + 'jquery.hoverex.min.js',
         paths.jquery + 'jquery.prettyPhoto.js',
         paths.jquery + 'jquery.isotope.min.js',
+        paths.jquery + 'jquery.imagesloaded.js',
         'app.js'
     ], null, 'resources/assets/js/');
 
