@@ -7,8 +7,8 @@
 @section('header')
     <div id="blue">
         <div class="container">
-            <div class="row">
-                <h3>We rage quit often.</h3>
+            <div class="row centered">
+                <h3>Our Members</h3>
             </div><!-- /row -->
         </div> <!-- /container -->
     </div><!-- /blue -->
@@ -19,7 +19,7 @@
     <div class="container mtb">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 centered">
-                <h2>Our Members.</h2>
+                <h2>We rage quit often.</h2>
                 <br>
                 <div class="hline"></div>
             </div>
@@ -27,8 +27,9 @@
     </div><! --/container -->
 
     <div id="portfoliowrap">
+        <div class="spinner-loader">Loading...</div>
         <div class="portfolio-centered">
-            <div class="recentitems portfolio">
+            <div class="portfolio">
 
                 @foreach($gamers as $gamer)
                     <div class="portfolio-item graphic-design">
@@ -37,8 +38,8 @@
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">{{ $gamer->gamertag }}</h3>
-                                    <a href="{{ url('/members/'.$gamer->gamertag.'/clips') }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
-                                    <a href="{{ url('/members/'.$gamer->gamertag) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
+                                    <a href="{{ url('/members/'.$gamer->id.'/clips') }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
+                                    <a href="{{ url('/members/'.$gamer->id) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
                                 </div><!-- he bg -->
                             </div><!-- he view -->
                         </div><!-- he wrap -->

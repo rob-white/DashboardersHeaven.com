@@ -17,18 +17,30 @@ class GamersController extends Controller
      */
     public function index()
     {
-        $gamers = Gamer::with('games')->get();
-        return view('pages.gamer', compact('gamers'));
+        $gamers = Gamer::all();
+        return view('pages.gamers', compact('gamers'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified gamer.
      *
-     * @param  int  $id
+     * @param $id
      * @return Response
      */
     public function show($id)
     {
-        //
+        $gamer = Gamer::with('games')->findOrFail($id);
+        return view('pages.profile', compact('gamer'));
+    }
+
+    /**
+     * Display all clips for a gamer.
+     *
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function clips($id)
+    {
+        //return view('pages.clips', compact('gamertag'));
     }
 }

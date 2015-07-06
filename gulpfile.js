@@ -22,7 +22,8 @@ elixir(function(mix) {
         paths.bootstrap + 'prettyPhoto.css',
         paths.bootstrap + 'hoverex-all.css',
         paths.bootstrap + 'bootstrap-solid-theme.css',
-        paths.bootstrap + 'font-awesome.min.css'
+        paths.bootstrap + 'font-awesome.min.css',
+        'app.css'
     ], null, 'resources/assets/css/');
 
     mix.scripts([

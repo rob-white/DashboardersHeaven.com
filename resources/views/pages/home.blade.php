@@ -5,22 +5,15 @@
 @endsection
 
 @section('header')
-    <!-- Section 1 (Header) -->
-    <div id="headerwrap">
+
+    <div id="blue">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h3>Lorem Ipsum</h3>
-                    <h1>Carousel of Newest Clips?</h1>
-                    <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5>
-                    <h5>More Lorem Ipsum added here too.</h5>
-                </div>
-                <div class="col-lg-8 col-lg-offset-2 himg">
-                    {{--<img src="assets/img/browser.png" class="img-responsive">--}}
-                </div>
+            <div class="row centered">
+                <h3>Welcome to Dashboarder's Heaven</h3>
             </div><!-- /row -->
         </div> <!-- /container -->
-    </div><!-- /headerwrap -->
+    </div><!-- /blue -->
+
 @endsection
 
 @section('content')

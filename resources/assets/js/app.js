@@ -42,20 +42,20 @@
         },
         masonry: {
         }
-    }); //, refreshWaypoints());
+    }, refreshWaypoints());
 
-    //function refreshWaypoints() {
-    //    setTimeout(function() {
-    //    }, 1000);
-    //}
+    function refreshWaypoints() {
+        setTimeout(function() {
+        }, 1000);
+    }
 
-    //$('nav.portfolio-filter ul a').on('click', function() {
-    //    var selector = $(this).attr('data-filter');
-    //    $container.isotope({ filter: selector }, refreshWaypoints());
-    //    $('nav.portfolio-filter ul a').removeClass('active');
-    //    $(this).addClass('active');
-    //    return false;
-    //});
+    $('nav.portfolio-filter ul a').on('click', function() {
+        var selector = $(this).attr('data-filter');
+        $container.isotope({ filter: selector }, refreshWaypoints());
+        $('nav.portfolio-filter ul a').removeClass('active');
+        $(this).addClass('active');
+        return false;
+    });
 
     function getColumnNumber() {
         var winWidth = $(window).width(),
@@ -93,6 +93,7 @@
     }
 
     $container.imagesLoaded(function () {
+        $('.spinner-loader').remove();
         $('.portfolio-item img').removeClass('hidden');
         setPortfolio();
     });

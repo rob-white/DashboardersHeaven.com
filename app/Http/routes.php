@@ -13,6 +13,6 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/members', 'GamersController@index');
-Route::get('/members/{gamer}/clips', 'GamersController@clips');
-Route::get('/members/{gamer}', 'GamersController@show');
+Route::get('/members/{id}', 'GamersController@show');
+Route::get('/members/{id}/clips', 'GamersController@clips');
 Route::get('/about', 'AboutController@index');
