@@ -1,3 +1,24 @@
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+.grid .tick {
+    stroke: #ededed;
+    opacity: 0.7;
+}
+.axis {
+    -webkit-user-select: none;  /* Chrome/Safari */
+    -moz-user-select: none;     /* Firefox */
+    -ms-user-select: none;      /* IE10+ */
+}
+
 @-moz-keyframes spinner-loader {
     0% {
         -moz-transform: rotate(0deg);

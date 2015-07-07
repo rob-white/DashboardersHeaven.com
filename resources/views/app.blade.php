@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboarder's Heaven | @yield('title')</title>
 
     <link rel="stylesheet" href="{{ elixir("css/all.css") }}">
@@ -28,14 +28,7 @@
 
 <script src="{{ elixir("js/all.js") }}"></script>
 
-<!-- Not sure if we'll need any of this crap -->
-{{--<script src="assets/js/retina-1.1.0.js"></script>--}}
-{{--<script src="assets/js/jquery.hoverdir.js"></script>--}}
-{{--<script src="assets/js/jquery.hoverex.min.js"></script>--}}
-{{--<script src="assets/js/jquery.prettyPhoto.js"></script>--}}
-{{--<script src="assets/js/jquery.isotope.min.js"></script>--}}
-{{--<script src="assets/js/custom.js"></script>--}}
-{{--<script src="assets/js/modernizr.js"></script>--}}
+@yield('scripts')
 
 </body>
 </html>

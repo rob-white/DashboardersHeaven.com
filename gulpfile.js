@@ -13,7 +13,9 @@ var elixir = require('laravel-elixir');
 
 var paths = {
     jquery: 'vendor/jquery/',
-    bootstrap: 'vendor/bootstrap/'
+    bootstrap: 'vendor/bootstrap/',
+    d3: 'vendor/d3/',
+    underscore: 'vendor/underscore/'
 };
 
 elixir(function(mix) {
@@ -29,6 +31,9 @@ elixir(function(mix) {
     mix.scripts([
         paths.jquery + 'jquery-2.1.4.min.js',
         paths.bootstrap + 'bootstrap.min.js',
+        paths.underscore + 'underscore.min.js',
+        paths.d3 + 'd3.min.js',
+        paths.d3 + 'd3.scatterchart.js',
         paths.jquery + 'retina-1.1.0.js',
         paths.jquery + 'jquery.hoverdir.js',
         paths.jquery + 'jquery.hoverex.min.js',

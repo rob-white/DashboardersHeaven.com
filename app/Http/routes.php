@@ -16,3 +16,8 @@ Route::get('/members', 'GamersController@index');
 Route::get('/members/{id}', 'GamersController@show');
 Route::get('/members/{id}/clips', 'GamersController@clips');
 Route::get('/about', 'AboutController@index');
+
+// Dummy API for testing
+Route::group(['prefix' => 'api/v1'], function () {
+    Route::get('gamerscores/{id}', 'ApiController@gamerscores');
+});

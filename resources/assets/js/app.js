@@ -1,3 +1,24 @@
+// Grab csrf token for ajax calls
+(function($) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+})($);
+
+// Bootstrap Tooltips
+(function($) {
+
+    $('[data-toggle="tooltip"]').tooltip({
+        delay: {
+            show: 500,
+            hide: 0
+        }
+    });
+
+})($);
+
 // PrettyPhoto
 (function($) {
 
@@ -101,4 +122,5 @@
     $(window).on('resize', function () {
         setPortfolio();
     });
-})(jQuery);
+
+})($);
