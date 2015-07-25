@@ -1,6 +1,9 @@
 <?php namespace DashboardersHeaven\Console;
 
+use DashboardersHeaven\Console\Commands\GamersCommand;
 use DashboardersHeaven\Console\Commands\UpdateGamersCommand;
+use DashboardersHeaven\Console\Commands\UpdateGamersGamesCommand;
+use DashboardersHeaven\Gamer;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -12,7 +15,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        GamersCommand::class,
         UpdateGamersCommand::class,
+        UpdateGamersGamesCommand::class
     ];
 
     /**
@@ -24,6 +29,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-
+        $gamers = Gamer::all();
+        foreach ($gamers as $gamer) {
+            $schedule->command('gamers', ['xuid' => $gamer->xuid])
+                     ->name('Update ' . $gamer->gamertag)
+                     ->hourly()
+                     ->withoutOverlapping()
+                     ->sendOutputTo(storage_path("logs/commands/{$gamer->gamertag}.log"));
+        }
     }
 }

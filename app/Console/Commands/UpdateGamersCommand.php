@@ -1,11 +1,11 @@
-<?php namespace DashboardersHeaven\Console\Commands;
+<?php
+
+namespace DashboardersHeaven\Console\Commands;
 
 use DashboardersHeaven\Gamer;
 use DashboardersHeaven\Gamerscore;
 use GuzzleHttp\Client;
-use GuzzleHttp\Promise;
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Config\Repository;
 
 class UpdateGamersCommand extends Command
 {
@@ -14,38 +14,34 @@ class UpdateGamersCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'update:gamers';
+    protected $signature = 'gamers:update {xuid : The XUID of the Gamer.}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Updates the gamers table with new Xbox Live information.';
+    protected $description = 'Updates the gamer with based on their gamercard and profile.';
 
     /**
      * @var \GuzzleHttp\Client
      */
-    protected $client;
+    private $client;
 
     /**
-     * @var array
+     * @var \DashboardersHeaven\Gamer
      */
-    protected $gamertags;
+    private $gamer;
 
     /**
-     * @var array
+     * Create a new command instance.
+     *
+     * @param \GuzzleHttp\Client $client
      */
-    protected $gamertagXUIDS = [];
-
-    protected $cleanRun = false;
-
-    public function __construct(Client $client, Repository $config)
+    public function __construct(Client $client)
     {
         parent::__construct();
-        $this->client    = $client;
-        $this->gamertags = $config->get('xboxapi.gamertags');
-        $this->prepareXuids();
+        $this->client = $client;
     }
 
     /**
@@ -55,187 +51,48 @@ class UpdateGamersCommand extends Command
      */
     public function handle()
     {
-        $this->info('Getting profile information...');
-        $profiles = [];
-        if ($this->cleanRun) {
-            $profiles = $this->getProfilesFirstTime();
-        } else {
-            $profiles = $this->getProfiles();
-        }
-
-        if (empty($profiles)) {
-            $this->error('No available profiles');
-
-            return false;
-        }
-
-        $this->createOrUpdateGamers($profiles);
-        $this->updateWithGamercard();
+        $xuid        = $this->argument('xuid');
+        $this->gamer = Gamer::whereXuid($xuid)->first();
+        $this->getGamercard($xuid);
+        $this->getProfile($xuid);
     }
 
-    protected function prepareXuids()
+    private function getGamercard($xuid)
     {
-        $gamers = Gamer::all();
+        $this->info('Getting the gamercard data for ' . $xuid);
 
-        if ($gamers->isEmpty()) {
-            $this->cleanRun      = true;
-            $this->gamertagXUIDS = array_flip($this->gamertags);
-            array_walk($this->gamertagXUIDS, function (&$value) {
-                $value = null;
-            });
+        $response  = $this->client->get("v2/$xuid/gamercard");
+        $gamercard = json_decode((string) $response->getBody());
 
-            return;
-        }
-
-        $this->gamertagXUIDS = $gamers->reduce(function ($xuids, Gamer $gamer) {
-            $xuids[$gamer->gamertag] = $gamer->xuid;
-
-            return $xuids;
-        }, []);
-
-        return;
-    }
-
-    protected function getProfilesFirstTime()
-    {
-        $this->info('Profile first run, getting XUIDs...');
-        $promises = [];
-        foreach ($this->gamertagXUIDS as $gamertag => $xuid) {
-            $promises[$gamertag] = $this->client->getAsync("v2/xuid/$gamertag");
-        }
-
-        $this->output->progressStart(count($promises));
-
-        $results = $this->unwrap($promises);
-
-        $this->output->progressFinish(count($promises));
-
-        array_walk($results, function (&$result, $gamertag) {
-            $result = $this->gamertagXUIDS[$gamertag] = (int) (string) $result->getBody();
-        });
-
-        return $this->getProfiles($results);
-    }
-
-    protected function getProfiles(array $xuids = [])
-    {
-        $this->info('Getting profile data...');
-        $xuids = (!empty($xuids)) ? $xuids : $this->gamertagXUIDS;
-
-        $promises = [];
-
-        foreach ($xuids as $gamertag => $xuid) {
-            $promises[$gamertag] = $this->client->getAsync("v2/$xuid/profile");
-        }
-
-        $this->output->progressStart(count($promises));
-
-        $results = $this->unwrap($promises);
-
-        $this->output->progressFinish(count($promises));
-
-        array_walk($results, function (&$result) {
-            $result = json_decode((string) $result->getBody());
-        });
-
-        return $results;
-    }
-
-    protected function createOrUpdateGamers($profiles)
-    {
-        if ($this->cleanRun) {
-            $this->createGamers($profiles);
-
-            return;
-        }
-
-        foreach ($profiles as $gamertag => $profile) {
-            /**
-             * @var Gamer $gamer
-             */
-            $gamer = Gamer::whereGamertag($gamertag)->first();
-
-            $data = $this->extractProfileData($profile);
-            $gamer->update($data);
-
-            $gamer->gamerscores()->save(new Gamerscore(['score' => $data['gamerscore']]));
-        }
-    }
-
-    protected function createGamers($profiles)
-    {
-        foreach ($profiles as $gamertag => $profile) {
-            $data  = $this->extractProfileData($profile);
-            $gamer = Gamer::create($data);
-
-            $gamer->gamerscores()->save(new Gamerscore(['score' => $data['gamerscore']]));
-        }
-    }
-
-    protected function updateWithGamercard()
-    {
-        $this->info('Getting gamercard information...');
-        $promises = [];
-        foreach ($this->gamertagXUIDS as $gamertag => $xuid) {
-            $promises[$gamertag] = $this->client->getAsync("v2/$xuid/gamercard");
-        }
-
-        $this->output->progressStart(count($promises));
-
-        $results = $this->unwrap($promises);
-
-        $this->output->progressFinish(count($promises));
-
-        array_walk($results, function (&$result) {
-            $result = json_decode((string) $result->getBody());
-        });
-
-        foreach ($results as $gamertag => $gamercard) {
-            /**
-             * @var Gamer $gamer
-             */
-            $gamer = Gamer::whereGamertag($gamertag)->first();
-
-            $data = $this->extractGamercardData($gamercard);
-            $gamer->update($data);
-        }
-    }
-
-    protected function extractProfileData($profile)
-    {
-        return [
-            'xuid'            => data_get($profile, 'id'),
-            'gamertag'        => data_get($profile, 'Gamertag'),
-            'gamerscore'      => data_get($profile, 'Gamerscore'),
-            'gamerpic_small'  => data_get($profile, 'gamerpicSmallSslImagePath'),
-            'gamerpic_large'  => data_get($profile, 'gamerpicLargeSslImagePath'),
-            'display_pic'     => data_get($profile, 'GameDisplayPicRaw'),
-            'motto'           => data_get($profile, 'motto'),
-            'bio'             => data_get($profile, 'bio'),
-            'avatar_manifest' => data_get($profile, 'avatarManifest'),
-            'level'           => data_get($profile, 'TenureLevel'),
-        ];
-    }
-
-    protected function extractGamercardData($gamercard)
-    {
-        return [
+        $this->gamer->update([
             'gamerpic_small'  => data_get($gamercard, 'gamerpicSmallSslImagePath'),
             'gamerpic_large'  => data_get($gamercard, 'gamerpicLargeSslImagePath'),
             'motto'           => data_get($gamercard, 'motto'),
             'bio'             => data_get($gamercard, 'bio'),
             'avatar_manifest' => data_get($gamercard, 'avatarManifest'),
-        ];
+        ]);
+
+        $this->info('Finished getting the gamercard data for ' . $xuid);
     }
 
-    private function unwrap(array $promises)
+    private function getProfile($xuid)
     {
-        $results = [];
-        foreach ($promises as $key => $promise) {
-            $this->output->progressAdvance();
-            $results[$key] = $promise->wait();
-        }
+        $this->info('Getting the profile data for ' . $xuid);
 
-        return $results;
+        $response = $this->client->get("v2/$xuid/profile");
+        $profile  = json_decode((string) $response->getBody());
+
+        $this->gamer->update([
+            'gamertag'    => data_get($profile, 'Gamertag'),
+            'gamerscore'  => data_get($profile, 'Gamerscore'),
+            'display_pic' => data_get($profile, 'GameDisplayPicRaw'),
+            'level'       => data_get($profile, 'TenureLevel'),
+        ]);
+
+        $this->gamer->gamerscores()->save(new Gamerscore([
+            'score' => data_get($profile, 'Gamerscore')
+        ]));
+
+        $this->info('Finished getting the profile data for ' . $xuid);
     }
 }
