@@ -70,6 +70,8 @@ class UpdateGamersGamesCommand extends Command
             return;
         }
 
+        $titles = $titles->titles;
+
         foreach ($titles as $title) {
             $titleData      = $this->transformTitleData($title);
             $game           = Game::firstOrCreate($titleData);
