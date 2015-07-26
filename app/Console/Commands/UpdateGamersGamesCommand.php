@@ -62,7 +62,13 @@ class UpdateGamersGamesCommand extends Command
         $this->info('Getting the games played by ' . $xuid);
 
         $response = $this->client->get("v2/$xuid/xboxonegames");
-        $titles   = json_decode((string) $response->getBody())->titles;
+        $titles   = json_decode((string) $response->getBody());
+
+        if (!isset($titles->titles)) {
+            $this->error('Could not get the games played by ' . $xuid);
+
+            return;
+        }
 
         foreach ($titles as $title) {
             $titleData      = $this->transformTitleData($title);
