@@ -71,8 +71,6 @@ class UpdateGamersCommand extends Command
             'bio'             => data_get($gamercard, 'bio'),
             'avatar_manifest' => data_get($gamercard, 'avatarManifest'),
         ]);
-
-        $this->info('Finished getting the gamercard data for ' . $xuid);
     }
 
     private function getProfile($xuid)
@@ -92,7 +90,5 @@ class UpdateGamersCommand extends Command
         $this->gamer->gamerscores()->save(new Gamerscore([
             'score' => data_get($profile, 'Gamerscore')
         ]));
-
-        $this->info('Finished getting the profile data for ' . $xuid);
     }
 }

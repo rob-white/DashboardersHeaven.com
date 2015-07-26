@@ -1,6 +1,7 @@
 <?php namespace DashboardersHeaven\Console;
 
 use DashboardersHeaven\Console\Commands\GamersCommand;
+use DashboardersHeaven\Console\Commands\UpdateGamersClipsCommand;
 use DashboardersHeaven\Console\Commands\UpdateGamersCommand;
 use DashboardersHeaven\Console\Commands\UpdateGamersGamesCommand;
 use DashboardersHeaven\Gamer;
@@ -17,7 +18,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         GamersCommand::class,
         UpdateGamersCommand::class,
-        UpdateGamersGamesCommand::class
+        UpdateGamersGamesCommand::class,
+        UpdateGamersClipsCommand::class
     ];
 
     /**

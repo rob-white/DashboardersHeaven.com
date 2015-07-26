@@ -2,6 +2,8 @@
 
 namespace DashboardersHeaven\Console\Commands;
 
+use DashboardersHeaven\Clip;
+use DashboardersHeaven\Gamer;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 
@@ -48,13 +50,46 @@ class UpdateGamersClipsCommand extends Command
 
     private function getClips($xuid)
     {
-        $this->info('Getting the gamercard data for ' . $xuid);
+        $this->info('Getting the game clips for ' . $xuid);
 
         $response = $this->client->get("v2/$xuid/game-clips");
         $clips    = json_decode((string) $response->getBody());
 
         foreach ($clips as $clip) {
-            //TODO: Get game clip information and save them.
+            if ($clip->state === "PendingUpload") {
+                continue;
+            }
+
+            $clipData = $this->extractClipData($clip);
+            $clip     = Clip::firstOrCreate($clipData);
+
+            if ($clip->exists) {
+                $clip->update($clipData);
+            }
         }
+    }
+
+    private function extractClipData($data)
+    {
+        return [
+            'clip_id'         => data_get($data, 'gameClipId'),
+            'title_id'        => data_get($data, 'titleId'),
+            'name'            => data_get($data, 'clipName'),
+            'xuid'            => data_get($data, 'xuid'),
+            'thumbnail_small' => data_get($data, 'thumbnails.0.uri'),
+            'thumbnail_large' => data_get($data, 'thumbnails.1.uri'),
+            'url'             => $this->getClipUrl(data_get($data, 'gameClipUris')),
+            'saved'           => (boolean) data_get($data, 'savedByUser'),
+            'recorded_at'     => data_get($data, 'dateRecorded'),
+        ];
+    }
+
+    private function getClipUrl($uris)
+    {
+        $downloadUri = array_reduce($uris, function ($inital, $uri) {
+            return ($uri->uriType == "Download") ? $uri->uri : null;
+        });
+
+        return $downloadUri;
     }
 }

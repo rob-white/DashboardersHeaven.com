@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon                                                            $created_at
  * @property \Carbon\Carbon                                                            $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamer[] $gamers
+ * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Clip[]  $clips
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitleId($value)
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitle($value)
@@ -41,6 +42,16 @@ class Game extends Model
                         'last_unlock'
                     ])
                     ->withTimestamps();
+    }
+
+    /**
+     * Get all the clips that recorded in this game
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function clips()
+    {
+        return $this->hasMany('DashboardersHeaven\Clip', 'title_id', 'title_id');
     }
 
     /**

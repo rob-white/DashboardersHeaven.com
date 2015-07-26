@@ -59,18 +59,27 @@ class UpdateGamersGamesCommand extends Command
     private function getXboxOneGames($xuid)
     {
         //TODO: Look into using the game information api to get more info
-        $this->info('Getting the gamercard data for ' . $xuid);
+        $this->info('Getting the games played by ' . $xuid);
 
         $response = $this->client->get("v2/$xuid/xboxonegames");
-        $titles   = json_decode((string) $response->getBody())['titles'];
+        $titles   = json_decode((string) $response->getBody())->titles;
 
         foreach ($titles as $title) {
-            $titleData = $this->transformTitleData($title);
-            $game      = Game::firstOrCreate($titleData);
+            $titleData      = $this->transformTitleData($title);
+            $game           = Game::firstOrCreate($titleData);
+            $gamerTitleData = $this->transformGamerTitleData($title);
 
             //Find and update, or create relationship between the gamer and the game
             if ($game->exists) {
                 $game->update($titleData);
+            }
+
+            $gamerGame = $this->gamer->games->find($game);
+
+            if (empty($gamerGame)) {
+                $this->gamer->games()->save($game, $gamerTitleData);
+            } else {
+                $this->gamer->games()->updateExistingPivot($game->id, $gamerTitleData);
             }
         }
     }
@@ -80,6 +89,16 @@ class UpdateGamersGamesCommand extends Command
         return [
             'title'    => data_get($title, 'name'),
             'title_id' => data_get($title, 'titleId'),
+        ];
+    }
+
+    private function transformGamerTitleData($title)
+    {
+        return [
+            'earned_achievements' => data_get($title, 'earnedAchievements'),
+            'current_gamerscore'  => data_get($title, 'currentGamerscore'),
+            'max_gamerscore'      => data_get($title, 'maxGamerscore'),
+            'last_unlock'         => data_get($title, 'lastUnlock'),
         ];
     }
 }

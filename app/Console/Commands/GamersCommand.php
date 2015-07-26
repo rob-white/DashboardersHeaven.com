@@ -41,5 +41,7 @@ class GamersCommand extends Command
         $this->call('gamers:update', ['xuid' => $xuid]);
 
         $this->call('gamers:games', ['xuid' => $xuid]);
+
+        $this->call('gamers:clips', ['xuid' => $xuid]);
     }
 }

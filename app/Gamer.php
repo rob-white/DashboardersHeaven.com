@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon                                                                 $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamerscore[] $gamerscores
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Game[]       $games
+ * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Clip[]       $clips
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereXuid($value)
  * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamertag($value)
@@ -86,6 +87,16 @@ class Gamer extends Model
                         'last_unlock'
                     ])
                     ->withTimestamps();
+    }
+
+    /**
+     * Get all the gamers clips
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function clips()
+    {
+        return $this->hasMany('DashboardersHeaven\Clip', 'xuid', 'xuid');
     }
 
     /**
