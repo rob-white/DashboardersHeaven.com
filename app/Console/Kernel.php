@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
     {
         $gamers = Gamer::all();
         foreach ($gamers as $gamer) {
-            $schedule->command('gamers', ['xuid' => $gamer->xuid])
+            $schedule->command('gamers', [$gamer->xuid])
                      ->name('Update ' . $gamer->gamertag)
                      ->hourly()
                      ->withoutOverlapping()

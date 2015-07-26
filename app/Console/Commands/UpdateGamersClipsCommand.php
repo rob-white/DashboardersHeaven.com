@@ -55,16 +55,24 @@ class UpdateGamersClipsCommand extends Command
         $response = $this->client->get("v2/$xuid/game-clips");
         $clips    = json_decode((string) $response->getBody());
 
+        if (!is_array($clips)) {
+            $this->error('Unable to get clips for ' . $xuid);
+
+            return;
+        }
+
         foreach ($clips as $clip) {
-            if ($clip->state === "PendingUpload") {
+            if (isset($clip->state) && $clip->state === "PendingUpload") {
                 continue;
             }
 
             $clipData = $this->extractClipData($clip);
-            $clip     = Clip::firstOrCreate($clipData);
+            $clip     = Clip::whereClipId($clipData['clip_id'])->first();
 
-            if ($clip->exists) {
+            if (!empty($clip)) {
                 $clip->update($clipData);
+            } else {
+                $clip = Clip::create($clipData);
             }
         }
     }

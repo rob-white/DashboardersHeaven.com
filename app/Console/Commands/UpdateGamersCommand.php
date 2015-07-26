@@ -87,8 +87,12 @@ class UpdateGamersCommand extends Command
             'level'       => data_get($profile, 'TenureLevel'),
         ]);
 
-        $this->gamer->gamerscores()->save(new Gamerscore([
-            'score' => data_get($profile, 'Gamerscore')
-        ]));
+        $score = data_get($profile, 'Gamerscore');
+
+        if (!empty($score)) {
+            $this->gamer->gamerscores()->save(new Gamerscore([
+                'score' => $score
+            ]));
+        }
     }
 }
