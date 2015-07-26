@@ -15,22 +15,24 @@ use Illuminate\Database\Eloquent\Model;
  * @property string                                                                         $motto
  * @property string                                                                         $bio
  * @property mixed                                                                          $avatar_manifest
+ * @property integer                                                                        $level
  * @property \Carbon\Carbon                                                                 $created_at
  * @property \Carbon\Carbon                                                                 $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamerscore[] $gamerscores
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Game[]       $games
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereId( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereXuid( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamertag( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerscore( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerpicSmall( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerpicLarge( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereDisplayPic( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereMotto( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereBio( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereAvatarManifest( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereCreatedAt( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereUpdatedAt( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereXuid($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamertag($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerscore($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerpicSmall($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereGamerpicLarge($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereDisplayPic($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereMotto($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereBio($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereAvatarManifest($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereLevel($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamer whereUpdatedAt($value)
  */
 class Gamer extends Model
 {
@@ -54,7 +56,9 @@ class Gamer extends Model
         'gamerpic_large',
         'display_pic',
         'bio',
-        'avatar_manifest'
+        'motto',
+        'avatar_manifest',
+        'level'
     ];
 
     /**

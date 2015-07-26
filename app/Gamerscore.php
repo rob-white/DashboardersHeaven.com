@@ -11,11 +11,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon                 $created_at
  * @property \Carbon\Carbon                 $updated_at
  * @property-read \DashboardersHeaven\Gamer $gamer
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereId( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereGamerId( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereScore( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereCreatedAt( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereUpdatedAt( $value )
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereGamerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereScore($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Gamerscore whereUpdatedAt($value)
  */
 class Gamerscore extends Model
 {
