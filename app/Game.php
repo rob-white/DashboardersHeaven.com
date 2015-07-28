@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer                                                                   $id
  * @property integer                                                                   $title_id
  * @property string                                                                    $title
+ * @property boolean                                                                   $is_app
  * @property \Carbon\Carbon                                                            $created_at
  * @property \Carbon\Carbon                                                            $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamer[] $gamers

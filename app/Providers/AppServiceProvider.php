@@ -2,6 +2,8 @@
 
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Monolog\Formatter\LineFormatter;
+use Monolog\Handler\SyslogHandler;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,13 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() === 'local') {
             $this->app->register(IdeHelperServiceProvider::class);
         }
+
+        $logger = $this->app->make('log')->getMonolog();
+
+        $syslog    = new SyslogHandler('papertrail');
+        $formatter = new LineFormatter('%channel%.%level_name%: %message% %context% %extra%');
+        $syslog->setFormatter($formatter);
+
+        $logger->pushHandler($syslog);
     }
 }
