@@ -38,6 +38,12 @@ class Kernel extends ConsoleKernel
                      ->hourly()
                      ->withoutOverlapping()
                      ->sendOutputTo(storage_path("logs/commands/{$gamer->gamertag}.log"));
+
+            $schedule->command('gamers:clips', [$gamer->xuid])
+                     ->name('Update ' . $gamer->gamertag . '\'s clips')
+                     ->everyThirtyMinutes()
+                     ->withoutOverlapping()
+                     ->sendOutputTo(storage_path("logs/commands/{$gamer->gamertag}-clips.log"));
         }
     }
 }
