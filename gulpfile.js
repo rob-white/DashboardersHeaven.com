@@ -16,13 +16,14 @@ var paths = {
     bootstrap: 'vendor/bootstrap/'
 };
 
-elixir(function(mix) {
+elixir(function (mix) {
     mix.styles([
         paths.bootstrap + 'bootstrap.css',
         paths.bootstrap + 'prettyPhoto.css',
         paths.bootstrap + 'hoverex-all.css',
         paths.bootstrap + 'bootstrap-solid-theme.css',
-        paths.bootstrap + 'font-awesome.min.css'
+        paths.bootstrap + 'font-awesome.min.css',
+        'custom.css'
     ], null, 'resources/assets/css/');
 
     mix.scripts([

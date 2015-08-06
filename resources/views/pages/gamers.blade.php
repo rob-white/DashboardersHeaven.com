@@ -24,27 +24,25 @@
                 <div class="hline"></div>
             </div>
         </div>
-    </div><! --/container -->
+    </div><!--/container -->
 
     <div id="portfoliowrap">
         <div class="portfolio-centered">
             <div class="recentitems portfolio">
-
                 @foreach($gamers as $gamer)
                     <div class="portfolio-item graphic-design">
                         <div class="he-wrap tpl6">
-                            <img src="{{ url($gamer->display_pic) }}" alt="Gamer Pic">
+                            <img src="{{ $gamer->display_pic }}" alt="{{ $gamer->gamertag }}'s Gamer Pic">
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">{{ $gamer->gamertag }}</h3>
-                                    <a href="{{ url('/clips/'.$gamer->gamertag) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
-                                    <a href="{{ url('/members/'.$gamer->gamertag) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
+                                    <a href="{{ route('clips', [$gamer->gamertag]) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
+                                    <a href="{{ route('member', [$gamer->gamertag]) }}" class="dmbutton a2" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
                                 </div><!-- he bg -->
                             </div><!-- he view -->
                         </div><!-- he wrap -->
                     </div><!-- end col-12 -->
                 @endforeach
-
             </div><!-- portfolio -->
         </div><!-- portfolio container -->
     </div><!--/Portfoliowrap -->
