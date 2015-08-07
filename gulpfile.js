@@ -15,7 +15,9 @@ var paths = {
     jquery: 'vendor/jquery/',
     bootstrap: 'vendor/bootstrap/',
     d3: 'vendor/d3/',
-    underscore: 'vendor/underscore/'
+    underscore: 'vendor/underscore/',
+    videojs: 'vendor/videojs/',
+    moment: 'vendor/moment/'
 };
 
 elixir(function (mix) {
@@ -25,7 +27,7 @@ elixir(function (mix) {
         paths.bootstrap + 'hoverex-all.css',
         paths.bootstrap + 'bootstrap-solid-theme.css',
         paths.bootstrap + 'font-awesome.min.css',
-        'custom.css',
+        paths.videojs + 'video-js.css',
         'app.css'
     ], null, 'resources/assets/css/');
 
@@ -41,6 +43,8 @@ elixir(function (mix) {
         paths.jquery + 'jquery.prettyPhoto.js',
         paths.jquery + 'jquery.isotope.min.js',
         paths.jquery + 'jquery.imagesloaded.js',
+        paths.videojs + 'video.js',
+        paths.moment + 'moment.min.js',
         'app.js'
     ], null, 'resources/assets/js/');
 

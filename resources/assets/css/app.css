@@ -72,3 +72,7 @@
     overflow: hidden;
     text-indent: 100%;
 }
+
+#blue h3 small {
+    color: #fff;
+}
