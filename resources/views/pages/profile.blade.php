@@ -9,7 +9,9 @@
         <div class="container">
             <div class="row centered">
                 <div class="col-md-4">
-                    <h3>{{ $gamer->gamertag }}</h3>
+                    <h3>
+                        {{ $gamer->gamertag }}
+                    </h3>
                 </div>
                 <div class="col-md-4">
                     <h3><i class="fa fa-star"></i> {{ $gamer->level }}</h3>
@@ -33,7 +35,6 @@
                 <h4>BIO</h4>
                 <p>{{ $gamer->bio }}</p>
             </div>
-            {{--<p><a href="contact.html" class="btn btn-theme">Contact Us</a></p>--}}
         </div><!-- /row ---->
     </div>
     <hr>

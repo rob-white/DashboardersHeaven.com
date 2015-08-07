@@ -24,12 +24,11 @@ class GamersController extends Controller
     /**
      * Display the specified gamer.
      *
-     * @param $id
+     * @param $gamer
      * @return Response
      */
-    public function show($id)
+    public function show(Gamer $gamer)
     {
-        $gamer = Gamer::with('games')->findOrFail($id);
         return view('pages.profile', compact('gamer'));
     }
 

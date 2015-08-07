@@ -15,10 +15,6 @@ Route::get('/', [
     'as'   => 'home',
     'uses' => 'HomeController@index'
 ]);
-Route::get('/news', [
-    'as'   => 'news',
-    'uses' => 'NewsController@index'
-]);
 Route::get('/members', [
     'as'   => 'members',
     'uses' => 'GamersController@index'
@@ -27,11 +23,11 @@ Route::get('/members/{gamer}', [
     'as'   => 'member',
     'uses' => 'GamersController@show'
 ]);
-Route::get('/clips/{gamer}', [
+Route::get('/members/{gamer}/clips', [
     'as'   => 'clips',
     'uses' => 'ClipsController@clips'
 ]);
-Route::get('/clips/{gamer}/{clipId}', [
+Route::get('/members/{gamer}/clips/{clip}', [
     'as'   => 'clip',
     'uses' => 'ClipsController@clip'
 ]);

@@ -5,25 +5,32 @@ use DashboardersHeaven\Gamer;
 
 class ClipsController extends Controller
 {
-    public function clips($gamertag)
+    /**
+     * Displays the clips page for a gamer.
+     *
+     * @param $gamer
+     * @return \Illuminate\View\View
+     */
+    public function clips(Gamer $gamer)
     {
-        /**
-         * @var Gamer $gamer
-         */
-        $gamer = Gamer::with('clips', 'clips.game')->whereGamertag($gamertag)->first();
         $clips = $gamer->clips()->paginate(16);
-        if (!$gamer) {
+
+        if( ! $gamer) {
             app()->abort(404); //TODO: Probably make this better, maybe?
         }
 
         return view('pages.clips', ['gamer' => $gamer, 'clips' => $clips]);
     }
 
-    public function clip($gamertag, $clipId)
+    /**
+     * Displays a page showing a gamer's clip.
+     *
+     * @param $gamer
+     * @param $clip
+     * @return \Illuminate\View\View
+     */
+    public function clip(Gamer $gamer, Clip $clip)
     {
-        $gamer = Gamer::whereGamertag($gamertag)->first();
-        $clip  = Clip::with('game')->whereClipId($clipId)->first();
-
-        return view('pages.clip', ['clip' => $clip, 'gamer' => $gamer]);
+        return view('pages.clip', ['gamer' => $gamer, 'clip' => $clip]);
     }
 }

@@ -38,13 +38,14 @@
                             <div class="he-view">
                                 <div class="bg a0" data-animate="fadeIn">
                                     <h3 class="a1" data-animate="fadeInDown">{{ $gamer->gamertag }}</h3>
-                                    <a href="{{ url('/members/'.$gamer->id.'/clips') }}" class="dmbutton a2" data-toggle="tooltip" data-original-title="Clips" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
-                                    <a href="{{ url('/members/'.$gamer->id) }}" class="dmbutton a2" data-toggle="tooltip" data-original-title="Profile" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
+                                    <a href="{{ url('/members/' . $gamer->id . '/clips') }}" class="dmbutton a2" data-toggle="tooltip" data-original-title="Clips" data-animate="fadeInUp"><i class="fa fa-video-camera"></i></a>
+                                    <a href="{{ url('/members/' . $gamer->id) }}" class="dmbutton a2" data-toggle="tooltip" data-original-title="Profile" data-animate="fadeInUp"><i class="fa fa-user"></i></a>
                                 </div><!-- he bg -->
                             </div><!-- he view -->
                         </div><!-- he wrap -->
                     </div><!-- end col-12 -->
                 @endforeach
+
             </div><!-- portfolio -->
         </div><!-- portfolio container -->
     </div><!--/Portfoliowrap -->
