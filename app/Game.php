@@ -8,14 +8,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer                                                                   $id
  * @property integer                                                                   $title_id
  * @property string                                                                    $title
+ * @property boolean                                                                   $is_app
  * @property \Carbon\Carbon                                                            $created_at
  * @property \Carbon\Carbon                                                            $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Gamer[] $gamers
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereId( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitleId( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitle( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereCreatedAt( $value )
- * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereUpdatedAt( $value )
+ * @property-read \Illuminate\Database\Eloquent\Collection|\DashboardersHeaven\Clip[]  $clips
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitleId($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereTitle($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\DashboardersHeaven\Game whereUpdatedAt($value)
  */
 class Game extends Model
 {
@@ -41,6 +43,16 @@ class Game extends Model
                         'last_unlock'
                     ])
                     ->withTimestamps();
+    }
+
+    /**
+     * Get all the clips that recorded in this game
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function clips()
+    {
+        return $this->hasMany('DashboardersHeaven\Clip', 'title_id', 'title_id');
     }
 
     /**

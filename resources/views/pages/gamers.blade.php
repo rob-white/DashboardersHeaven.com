@@ -24,7 +24,7 @@
                 <div class="hline"></div>
             </div>
         </div>
-    </div><! --/container -->
+    </div><!--/container -->
 
     <div id="portfoliowrap">
         <div class="spinner-loader">Loading...</div>
@@ -45,7 +45,6 @@
                         </div><!-- he wrap -->
                     </div><!-- end col-12 -->
                 @endforeach
-
             </div><!-- portfolio -->
         </div><!-- portfolio container -->
     </div><!--/Portfoliowrap -->

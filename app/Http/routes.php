@@ -11,10 +11,30 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/members', 'GamersController@index');
-Route::get('/members/{id}', 'GamersController@show');
-Route::get('/members/{id}/clips', 'GamersController@clips');
+Route::get('/', [
+    'as'   => 'home',
+    'uses' => 'HomeController@index'
+]);
+Route::get('/news', [
+    'as'   => 'news',
+    'uses' => 'NewsController@index'
+]);
+Route::get('/members', [
+    'as'   => 'members',
+    'uses' => 'GamersController@index'
+]);
+Route::get('/members/{gamer}', [
+    'as'   => 'member',
+    'uses' => 'GamersController@show'
+]);
+Route::get('/clips/{gamer}', [
+    'as'   => 'clips',
+    'uses' => 'ClipsController@clips'
+]);
+Route::get('/clips/{gamer}/{clipId}', [
+    'as'   => 'clip',
+    'uses' => 'ClipsController@clip'
+]);
 Route::get('/about', 'AboutController@index');
 
 // Dummy API for testing
